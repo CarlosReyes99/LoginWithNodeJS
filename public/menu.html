@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Gimnasio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .menu-bar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-bar h1 {
+            margin: 0;
+        }
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .menu-container {
+            display: none; /* Se oculta hasta que se active */
+            flex-direction: row; /* Secciones en línea */
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            padding: 20px;
+            gap: 20px; /* Espacio entre secciones */
+            overflow-x: auto; /* Permite desplazamiento horizontal */
+        }
+        .menu-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1; /* Hace que cada sección ocupe el mismo espacio */
+            min-width: 300px; /* Evita que se compriman demasiado */
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .menu-item img {
+            width: 200px; /* Tamaño uniforme */
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "flex"; // Ahora se muestra en horizontal
+            } else {
+                menu.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="menu-bar">
+        <h1>Menú del Gimnasio</h1>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
+    
+    <div id="menu" class="menu-container">
+        <div class="menu-item1">
+            <h3>Rutinas de Entrenamiento</h3>
+            <p>Explora diferentes rutinas para mejorar tu rendimiento.</p>
+            <div class="image-container">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\1 Imagen de WhatsApp 2025-03-05 a las 16.46.31_7b8d70b9.JPG" alt="Rutinas">
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <h3>Plan Nutricional</h3>
+            <p>Consejos de alimentación y suplementos.</p>
+            <div class="image-container">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\f0005596f1953219e8f3ec2f33db56fd.jpg" alt="Nutrición">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\4dbeea56d41fe259fee300e8f7bbb322.jpg" alt="Nutrición">
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <h3>Clases y Actividades</h3>
+            <p>Descubre nuestras clases grupales y actividades.</p>
+            <div class="image-container">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\FuLeKP-akAAX0aR.jpeg" alt="Clases">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\images.jpeg" alt="Clases">
+                <img src="C:\Users\arbey\OneDrive\Documents\7mo\Opt 1\Imagen Proyect\SmartTabata_WEBBanner.webp" alt="Clases">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

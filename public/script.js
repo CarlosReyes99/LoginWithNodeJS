@@ -104,26 +104,31 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formDataObject)
+            body: JSON.stringify(formDataObject),
+            redirect: 'follow' // Importante: permitir seguir redirecciones
         })
         .then(response => {
-            if (response.ok) {
+            if (response.redirected) {
+                // Si el servidor envió una redirección, seguirla
+                window.location.href = response.url;
+                return;
+            } else if (response.ok) {
                 return response.text();
             } else {
-                throw new Error("Error en la respuesta del servidor");
+                return response.text().then(text => {
+                    throw new Error(text || "Error en la respuesta del servidor");
+                });
             }
         })
         .then(data => {
-            console.log("Respuesta del servidor:", data);
-            alert(data);
-            if (data.includes("exitoso")) {
-                // Redirige al usuario a la página principal
-                window.location.href = "/dashboard.html";
+            if (data) {
+                console.log("Respuesta del servidor:", data);
+                alert(data);
             }
         })
         .catch(error => {
             console.error("Error en el login:", error);
-            alert("Error en el login. Inténtalo de nuevo.");
+            alert(error.message || "Error en el login. Inténtalo de nuevo.");
         });
     });
 });

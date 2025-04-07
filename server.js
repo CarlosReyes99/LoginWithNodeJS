@@ -40,7 +40,8 @@ app.post('/login', async (req, res) => {
             const passwordMatch = await bcrypt.compare(contraseña, hashedPassword);
 
             if (passwordMatch) {
-                res.send('Inicio de sesión exitoso.');
+                // Redireccionar a menu.html en lugar de enviar un mensaje
+                res.redirect('/menu.html');
             } else {
                 res.status(401).send('Contraseña incorrecta.');
             }
